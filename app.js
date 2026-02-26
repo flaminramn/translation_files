@@ -6,11 +6,7 @@ fetch("https://wabapi.ddns.net/books")
     const imageContainer = document.getElementById("image-container");
     const homeLink = document.getElementById("home-link");
     homeLink.addEventListener("click", () => {
-
-    imageContainer.innerHTML = "";
-
-    document.getElementById("book-list").style.display = "block";
-
+      imageContainer.innerHTML = "";
     });
 
     data.forEach(book => {
@@ -22,8 +18,7 @@ fetch("https://wabapi.ddns.net/books")
       link.href = "#";
 
       link.addEventListener("click", () => {
-        
-        document.getElementById("book-list").style.display = "none";
+         
         imageContainer.innerHTML = "";
 
         const pdfLink = document.createElement("a");
