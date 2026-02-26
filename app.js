@@ -4,6 +4,10 @@ fetch("https://wabapi.ddns.net/books")
 
     const list = document.getElementById("book-list");
     const imageContainer = document.getElementById("image-container");
+    const homeLink = document.getElementById("home-link");
+    homeLink.addEventListener("click", () => {
+      imageContainer.innerHTML = "";
+    });
 
     data.forEach(book => {
 
