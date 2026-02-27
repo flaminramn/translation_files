@@ -46,6 +46,5 @@ fetch("https://wabapi.ddns.net/books")
       list.appendChild(li);
 
     });
-
-  })
-  .catch(err => console.error(err));
+})
+.catch(err => console.error("FETCH ERROR:", err));
