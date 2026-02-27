@@ -1,50 +1,38 @@
-fetch("https://wabapi.ddns.net/books")
-  .then(res => res.json())
-  .then(data => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const list = document.getElementById("book-list");
-    const imageContainer = document.getElementById("image-container");
-    const homeLink = document.getElementById("home-link");
-    homeLink.addEventListener("click", () => {
-      imageContainer.innerHTML = "";
-    });
+  let currentPage = 1;
 
-    data.forEach(book => {
+  function loadBooks(page) {
 
-      const li = document.createElement("li");
-      const link = document.createElement("a");
+    fetch(`https://wabapi.ddns.net/books?page=${page}`)
+      .then(res => res.json())
+      .then(data => {
 
-      link.textContent = book.title;
-      link.href = "#";
+        const list = document.getElementById("book-list");
+        list.innerHTML = "";
 
-      link.addEventListener("click", () => {
-         
-        imageContainer.innerHTML = "";
-
-        const pdfLink = document.createElement("a");
-        pdfLink.href = book.pdf_url;
-        pdfLink.textContent = "Open PDF";
-        pdfLink.target = "_blank";
-
-        imageContainer.appendChild(pdfLink);
-
-        const hr = document.createElement("hr");
-        imageContainer.appendChild(hr);
-
-        book.images.forEach(imgUrl => {
-          const img = document.createElement("img");
-          img.src = imgUrl;
-          img.style.width = "600px";
-          img.style.display = "block";
-          img.style.marginBottom = "10px";
-          imageContainer.appendChild(img);
+        data.forEach(book => {
+          const li = document.createElement("li");
+          li.textContent = book.title;
+          list.appendChild(li);
         });
 
-      });
+      })
+      .catch(err => console.error(err));
+  }
 
-      li.appendChild(link);
-      list.appendChild(li);
+  document.getElementById("next-btn").onclick = function () {
+    currentPage++;
+    loadBooks(currentPage);
+  };
 
-    });
-})
-.catch(err => console.error("FETCH ERROR:", err));
+  document.getElementById("prev-btn").onclick = function () {
+    if (currentPage > 1) {
+      currentPage--;
+      loadBooks(currentPage);
+    }
+  };
+
+  loadBooks(currentPage);
+
+});
