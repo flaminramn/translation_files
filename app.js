@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function loadBooks(page) {
 
-    fetch(`https://wabapi.ddns.net/books?page=${page}`{
+    fetch(`https://wabapi.ddns.net/books?page=${page}`,{
       headers: {
          "x-API_KEY": "DqHuL+l7"
       }
