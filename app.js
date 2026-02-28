@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch(`https://wabapi.ddns.net/books/${id}`, {
        headers: {
-         "x-api-key": "DqHuL+l7"
+         "x-API-KEY": "DqHuL+l7"
        }
       })   
       .then(res => {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch(`https://wabapi.ddns.net/books?page=${page}`{
       headers: {
-         "x-api-key": "DqHuL+l7"
+         "x-API-KEY": "DqHuL+l7"
       }
       })
       .then(res => {
