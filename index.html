@@ -7,6 +7,11 @@
 </head>
 
 <body>
+  <div id="auth-controls">
+  <a href="/.auth/login/github" id="login-btn">Login</a>
+  <a href="/.auth/logout" id="logout-btn" style="display:none;">Logout</a>
+  <span id="user-email"></span>
+</div>
 
 <header>
   <h1>WAB Library</h1>
@@ -28,6 +33,24 @@
   <div id="image-container"></div>
 </main>
 
-<script src="app.js"></script>
+<script src="app.js">
+  fetch("/.auth/me")
+  .then(res => res.json())
+  .then(data => {
+    const loginBtn = document.getElementById("login-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const userEmail = document.getElementById("user-email");
+
+    if (data && data.clientPrincipal) {
+      loginBtn.style.display = "none";
+      logoutBtn.style.display = "inline";
+      userEmail.textContent = "Logged in as: " + data.clientPrincipal.userDetails;
+    } else {
+      loginBtn.style.display = "inline";
+      logoutBtn.style.display = "none";
+      userEmail.textContent = "";
+    }
+  });
+</script>
 </body>
 </html>
