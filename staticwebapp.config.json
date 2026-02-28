@@ -1,14 +1,19 @@
 {
   "routes": [
-    {
-      "route": "/*",
-      "allowedRoles": ["authenticated"]
-    }
-  ],
-  "responseOverrides": {
-    "401": {
-      "redirect": "/.auth/login/aad",
-      "statusCode": 302
-    }
+ {
+    "route": "/api/",
+    "rewrite": "https://wabapi.ddns.net/",
+    "allowedRoles": ["authenticated"]
+},
+{
+    "route": "/*",
+    "allowedRoles": ["authenticated"]
   }
+  ],
+    "responseOverrides": {
+    "401": {
+    "redirect": "/.auth/login/aad",
+    "statusCode": 302
+  }
+}
 }
