@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBooks(page) {
 
       fetch(`https://wabapi.ddns.net/books?page=${page}`, {
-        headers: {
-          "x-api_key": "DgHuL+17"
-        }
+       headers: {
+         "x-api_key": "DgHuL+17"
+       }
       })
       .then(res => {
         if (!res.ok) throw new Error(`List request failed: ${res.status}`);
