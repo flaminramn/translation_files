@@ -24,7 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function loadBookDetails(id) {
 
-    fetch(`https://wabapi.ddns.net/books/${id}`)
+    fetch(`https://wabapi.ddns.net/books/${id}`, {
+       headers: {
+         "x-api-key": "DqHuL+l7"
+       }
+      })   
       .then(res => {
         if (!res.ok) throw new Error(`Detail request failed: ${res.status}`);
         return res.json();
@@ -69,7 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function loadBooks(page) {
 
-    fetch(`https://wabapi.ddns.net/books?page=${page}`)
+    fetch(`https://wabapi.ddns.net/books?page=${page}`{
+      headers: {
+         "x-api-key": "DqHuL+l7"
+      }
+      })
       .then(res => {
         if (!res.ok) throw new Error(`List request failed: ${res.status}`);
         return res.json();
