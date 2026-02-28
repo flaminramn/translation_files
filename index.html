@@ -33,8 +33,10 @@
   <div id="image-container"></div>
 </main>
 
-<script src="app.js">
-  fetch("/.auth/me")
+<script src="app.js"></script>
+
+<script>
+fetch("/.auth/me")
   .then(res => res.json())
   .then(data => {
     const loginBtn = document.getElementById("login-btn");
